@@ -3,10 +3,13 @@ import { MemoryRouter, Switch, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Nav, Navbar, NavDropdown, Form, FormControl } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown, Form, FormControl, Figure } from 'react-bootstrap';
 import Home from './components/Home';
-import Login from './components/Login';
-import SignUp from './components/SignUp';
+import Login from './components/accounts/Login';
+import SignUp from './components/accounts/SignUp';
+import ServiceList from './components/services/ServiceList';
+import ServiceRegist from './components/services/ServiceRegist';
+import MyInfo from './components/accounts/MyInfo';
 
 import './App.css';
 
@@ -26,19 +29,22 @@ const App = () => (
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav href="#home" className="mr-auto">
-            <NavDropdown title="서비스목록" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+            <NavDropdown title="서비스" id="basic-nav-dropdown">
+              <LinkContainer to="/serviceLists">
+                <NavDropdown.Item>
+                    ServiceLists
+                </NavDropdown.Item>
+              </LinkContainer>
+
+              <LinkContainer to="/serviceRegist">
+                <NavDropdown.Item>
+                    RegistService
+                </NavDropdown.Item>
+              </LinkContainer>
             </NavDropdown>
 
           </Nav>
           <Form inline>
-            <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-            <Button variant="outline-success" className="mr-2">Search</Button>
-
             <LinkContainer to="/login">
               <Button variant="outline-success" className="mr-2">Login</Button>
             </LinkContainer>
@@ -47,13 +53,19 @@ const App = () => (
               <Button variant="outline-success">SignUp</Button>
             </LinkContainer>
 
-            <NavDropdown title="내정보" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-            </NavDropdown>
+            <LinkContainer to="/myInfo">
+              <Figure>
+                <Figure.Image
+                  className="ml-2 mt-2 mb-0"
+                  roundedCircle={true}
+                  width={30}
+                  height={30}
+                  alt="30*30"
+                  src="Kido.png"
+                />
+              </Figure>
+            </LinkContainer>
+
           </Form>
         </Navbar.Collapse>
       </Navbar>
@@ -69,6 +81,15 @@ const App = () => (
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/serviceLists">
+            <ServiceList />
+          </Route>
+          <Route path="/serviceRegist">
+            <ServiceRegist />
+          </Route>
+          <Route path="/myInfo">
+            <MyInfo />
           </Route>
           <Route path="/">
             <Home />

@@ -5,10 +5,10 @@ const Login = () => (
     <div>
         <Form>
             <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
+                <Form.Label>Name</Form.Label>
+                <Form.Control type="name" placeholder="이름를 입력하세요" />
                 <Form.Text className="text-muted">
-                We'll never share your email with anyone else.
+                    아이디 적용 규칙...
                 </Form.Text>
             </Form.Group>
 
@@ -17,10 +17,13 @@ const Login = () => (
                 <Form.Control type="password" placeholder="Password" />
             </Form.Group>
             <Form.Group controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
+                <Form.Check type="checkbox" label="Remember Me" />
             </Form.Group>
+            <Button variant="danger" type="submit" className="m-2">
+                Register
+            </Button>
             <Button variant="primary" type="submit">
-                Submit
+                Login
             </Button>
         </Form>
     </div>
